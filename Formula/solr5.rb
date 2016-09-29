@@ -1,4 +1,4 @@
-class Solr6 < Formula
+class Solr5 < Formula
   desc "Enterprise search platform from the Apache Lucene project"
   homepage "https://lucene.apache.org/solr/"
   url "https://www.apache.org/dyn/closer.cgi?path=lucene/solr/6.1.0/solr-6.1.0.tgz"
