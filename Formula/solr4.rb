@@ -14,21 +14,14 @@ class Solr4 < Formula
   def install
     libexec.install Dir["*"]
     bin.install "#{libexec}/bin/solr"
-    bin.install "#{libexec}/bin/post"
     bin.install "#{libexec}/bin/oom_solr.sh"
     share.install "#{libexec}/bin/solr.in.sh"
     prefix.install "#{libexec}/example"
-    prefix.install "#{libexec}/server"
-
-    # Fix the classpath for the post tool
-    inreplace "#{bin}/post", '"$SOLR_TIP/dist"', "#{libexec}/dist"
 
     # Fix the paths in the sample solrconfig.xml files
-    Dir.glob(["#{prefix}/example/**/solrconfig.xml",
-              "#{prefix}/**/data_driven_schema_configs/**/solrconfig.xml",
-              "#{prefix}/**/sample_techproducts_configs/**/solrconfig.xml"]) do |f|
-      inreplace f, ":../../../..}/", "}/libexec/"
-    end
+    # Dir.glob(["#{prefix}/example/**/solrconfig.xml"]) do |f|
+    #   inreplace f, ":../../../..}/", "}/libexec/"
+    # end
   end
 
   plist_options :manual => "solr start"
